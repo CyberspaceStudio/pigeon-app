@@ -13,6 +13,8 @@
 npm install commitizen -g
 
 3. IDE安装prettier的插件，配置save的时候自动使用prettier进行format, 具体方法自行百度
+
+4. IDE安装git-len插件
 ```
 
 ## run
@@ -45,6 +47,8 @@ git checkout -b <your-feature-branch-name>
 3. git rebase origin/boe
 4. git merge <your-frature-branch-name>
 5. git push origin boe
+
+// 处理冲突时根据git-len的信息找相关研发沟通解决冲突，严禁处理不可控的冲突
 ```
 
 4. 在github上从boe向master提pr，找人帮你做code review
