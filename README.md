@@ -43,9 +43,9 @@ git checkout -b <your-feature-branch-name>
 
 ```shell
 1. git checkout boe
-2. git fetch origin boe
-3. git rebase origin/boe
-4. git merge <your-frature-branch-name>
+2. git merge <your-frature-branch-name>
+3. git fetch origin boe
+4. git rebase origin/boe
 5. git push origin boe
 
 // 处理冲突时根据gitLens的信息找相关研发沟通解决冲突，严禁处理不可控的冲突
