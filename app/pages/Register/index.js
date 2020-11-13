@@ -1,79 +1,66 @@
 import React, { useState } from 'react'
 import { View, Text, TextInput } from 'react-native'
 import { Button } from 'react-native-elements'
+import { Color } from '../../style'
 import styles from './style'
-import { pxToDp } from '../../../style/unit'
 
 const Register = () => {
   const [prompt, setPrompt] = useState('密码长度8到16位')
   const [disabled, setDisabeled] = useState(true)
-  const [password1, setPassword1] = useState('')
-  const [password2, setPassword2] = useState('')
+  const [passwordSite, setPasswordSite] = useState('')
+  const [passwordConfrim, setPasswordConfrim] = useState('')
   const [warning, setWarning] = useState(false)
-  const end = () => {
+
+  const buttonState = () => {
     setDisabeled(false)
   }
   const passwordTest = () => {
-    let length1 = String(password1).length
-    let length2 = String(password2).length
-    if (password1 != password2) {
+    const lengthSite = passwordSite.length
+    const lengthConfrim = passwordConfrim.length
+
+    if (passwordSite != passwordConfrim) {
       setWarning(true)
       setPrompt('密码不一致，请重新输入')
+      return
     }
-    if (length1 < 8 || length1 > 16 || length2 < 8 || length2 > 16) {
-      setWarning(true)
-    } else if (
-      password1 == password2 &&
-      length1 > 8 &&
-      length1 < 16 &&
-      length2 > 8 &&
-      length2 < 16
+    const isPasswordLengthValid = (length) => {
+      return length >= 8 || length <= 16
+    }
+
+    if (
+      !isPasswordLengthValid(lengthSite) ||
+      !isPasswordLengthValid(lengthConfrim)
     ) {
+      setWarning(true)
+      return
+    } else if (passwordSite == passwordConfrim) {
       setWarning(false)
       setPrompt('密码长度8到16位')
     }
   }
-  const setColor = (warning) => {
-    if (warning) {
-      return 'red'
-    } else {
-      return '#909090'
-    }
-  }
+
   return (
     <View style={styles.container}>
       <TextInput
         placeholder="输入密码"
-        placeholderTextColor="#909090"
+        placeholderTextColor={placeholderTextColor}
         style={styles.input}
-        onChangeText={(text) => setPassword1(text)}
+        onChangeText={(text) => setPasswordSite(text)}
       />
       <TextInput
         placeholder="确认密码"
-        placeholderTextColor="#909090"
+        placeholderTextColor={Color.placeholderTextColor}
         style={styles.confirm}
-        onEndEditing={end}
-        onChangeText={(text) => setPassword2(text)}
+        onEndEditing={buttonState}
+        onChangeText={(text) => setPasswordConfrim(text)}
       />
-      <Text
-        style={{
-          color: setColor(warning),
-          width: pxToDp(285),
-          height: pxToDp(20),
-          marginLeft: pxToDp(14),
-          marginRight: pxToDp(59),
-          marginBottom: pxToDp(39),
-          fontSize: pxToDp(10)
-        }}
-      >
-        {prompt}
-      </Text>
+      <Text style={styles.text}>{prompt}</Text>
       <View>
         <Button
           title="确认提交"
           type="solid"
           buttonStyle={styles.button}
-          titleStyle={{ color: '#FFFFFF' }}
+          titleStyle={{ color: Color.buttonTitleColor }}
           disabled={disabled}
           onPress={passwordTest}
         />
