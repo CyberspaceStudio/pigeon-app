@@ -14,6 +14,14 @@ const Register = () => {
   const buttonState = () => {
     setDisabeled(false)
   }
+
+  const setTextColor = () => {
+    if (warning) {
+      return styles.textWarning
+    } else {
+      return styles.text
+    }
+  }
   const passwordTest = () => {
     const lengthSite = passwordSite.length
     const lengthConfrim = passwordConfrim.length
@@ -28,8 +36,8 @@ const Register = () => {
     }
 
     if (
-      !isPasswordLengthValid(lengthSite) ||
-      !isPasswordLengthValid(lengthConfrim)
+      isPasswordLengthValid(lengthSite) ||
+      isPasswordLengthValid(lengthConfrim)
     ) {
       setWarning(true)
       return
@@ -54,7 +62,7 @@ const Register = () => {
         onEndEditing={buttonState}
         onChangeText={(text) => setPasswordConfrim(text)}
       />
-      <Text style={styles.text}>{prompt}</Text>
+      <Text style={setTextColor()}>{prompt}</Text>
       <View>
         <Button
           title="确认提交"
