@@ -1,15 +1,7 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import { pxToDp } from '../../style/unit'
-import { warning } from './index'
 
-const setColor = (warning) => {
-  if (warning) {
-    return '#FF2525'
-  } else {
-    return '#909090'
-  }
-}
 const styles = StyleSheet.create({
   container: {
     marginTop: pxToDp(31),
@@ -38,12 +30,21 @@ const styles = StyleSheet.create({
     marginRight: pxToDp(59),
     marginBottom: pxToDp(39),
     fontSize: pxToDp(10),
-    color: setColor(warning)
+    color: '#909090'
   },
   button: {
     height: pxToDp(45),
     marginLeft: pxToDp(11),
     marginRight: pxToDp(10)
+  },
+  textWarning: {
+    width: pxToDp(285),
+    height: pxToDp(20),
+    marginLeft: pxToDp(14),
+    marginRight: pxToDp(59),
+    marginBottom: pxToDp(39),
+    fontSize: pxToDp(10),
+    color: '#FF2525'
   }
 })
 
