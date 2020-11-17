@@ -39,19 +39,22 @@ git checkout -b <your-feature-branch-name>
 // 使用npm run commit, 禁止使用git commit
 ```
 
-3. 开发完毕后合到boe分支，再推向远程
+3. 开发完毕后，推向远程自己的feature分支
 
 ```shell
-1. git checkout boe
-2. git merge <your-frature-branch-name>
-3. git fetch origin boe
-4. git rebase origin/boe
-5. git push origin boe
+1. git fetch origin boe
+2. git rebase origin/boe
+3. git push origin <your-feature-branch-name>
+> 建议feature命名   feature/login
+> 一个feature结束后，自行回收远程的feature分支
+4. git push origin --delete  <your-feature-branch-name>
 
 // 处理冲突时根据gitLens的信息找相关研发沟通解决冲突，严禁处理不可控的冲突
 ```
 
 4. 在github上从boe向master提pr，找人帮你做code review
+
+// 此部分可参考 [git flow流程实践](https://developer.ibm.com/zh/articles/os-cn-git-and-github-5/)
 
 5. review list
 
