@@ -33,7 +33,6 @@ const Login = () => {
               type="account"
               name="account"
               placeholder="手机号"
-              selectionColor="#bbbbbb"
             />
             <TextInput
               style={style.input}
@@ -42,7 +41,6 @@ const Login = () => {
               placeholder="输入密码"
               onFocus={() => setIsEditingPassword(true)}
               onBlur={() => setIsEditingPassword(false)}
-              selectionColor="#bbbbbb"
             />
             <Shadow useArt style={style.loginButtonContainer}>
               <Button
