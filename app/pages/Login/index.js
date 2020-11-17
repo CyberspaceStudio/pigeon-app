@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Text, Image, View, TextInput } from 'react-native'
+import { Text, Image, View } from 'react-native'
 import { Button } from 'react-native-elements'
 import { Formik } from 'formik'
 import { Shadow } from 'react-native-neomorph-shadows'
+import TextInput from '../../components/TextInput'
 
 import LogoShowPng from '../../asserts/images/logoShow.png'
 import logoHidePng from '../../asserts/images/logoHide.png'
