@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Text, Image, View, TextInput } from 'react-native'
+import { Text, Image, View } from 'react-native'
 import { Button } from 'react-native-elements'
 import { Formik } from 'formik'
 import { Shadow } from 'react-native-neomorph-shadows'
+import TextInput from '../../components/TextInput'
 
 import LogoShowPng from '../../asserts/images/logoShow.png'
 import logoHidePng from '../../asserts/images/logoHide.png'
@@ -32,6 +33,7 @@ const Login = () => {
               type="account"
               name="account"
               placeholder="手机号"
+              selectionColor="#bbbbbb"
             />
             <TextInput
               style={style.input}
@@ -40,6 +42,7 @@ const Login = () => {
               placeholder="输入密码"
               onFocus={() => setIsEditingPassword(true)}
               onBlur={() => setIsEditingPassword(false)}
+              selectionColor="#bbbbbb"
             />
             <Shadow useArt style={style.loginButtonContainer}>
               <Button
