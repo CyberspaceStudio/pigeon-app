@@ -10,39 +10,36 @@ import { pxToDp } from '../../style/unit'
 import Style, { color } from './style'
 
 export default () => {
-  const [isFocusTele, changeFocusTele] = useState(true)
-  const [isFocusCode, changeFocusCode] = useState(false)
-  const [inputTeleStatus, changeTeleStatus] = useState(false)
-  const [inputCodeStatus, changeCodeStatus] = useState(false)
-  const [clock, changeClock] = useState(0)
-  const [codeIsError, changecodeIsError] = useState(false)
+  const [isFocusTele, setFocusTele] = useState(true)
+  const [isFocusCode, setFocusCode] = useState(false)
+  const [inputTeleStatus, setTeleStatus] = useState(false)
+  const [inputCodeStatus, setCodeStatus] = useState(false)
+  const [clock, setClock] = useState(0)
+  const [codeIsError, setcodeIsError] = useState(false)
 
-  const checkTelePhone = (tele) => /^[0-9]{11}$/.test(tele)
+  const checkTelePhone = (tele) => /^[1]([3-9])[0-9]{9}$/.test(tele)
   const checkCode = (code) => /^[0-9]{6}$/.test(code)
 
   const getCodeIsAble = () => inputTeleStatus && clock === 0
   const getFinnshButtonIsAble = () => inputCodeStatus && inputTeleStatus
 
   const getCode = () => {
-    changeClock(60)
+    setClock(60)
   }
   useEffect(() => {
     let hander
-    if (clock !== 0) {
+    if (clock > 0) {
       hander = setTimeout(() => {
-        changeClock(clock - 1)
-        clearTimeout(hander)
+        setClock(clock - 1)
       }, 1000)
+      return () => hander && clearTimeout(hander)
     }
   }, [clock])
 
   const submitSignUpReq = () => {
     // 发送请求，再改变错误信息
-    changecodeIsError(!codeIsError)
+    setcodeIsError(!codeIsError)
   }
-})
-
-export default () => {
   return (
     <>
       <BaseElementsInput
@@ -56,12 +53,10 @@ export default () => {
           />
         }
         containerStyle={Style.containorMarginToTop}
-        onFocus={() => changeFocusTele(true)}
-        onBlur={() => changeFocusTele(false)}
+        onFocus={() => setFocusTele(true)}
+        onBlur={() => setFocusTele(false)}
         onChangeText={(tele) => {
-          checkTelePhone(tele)
-            ? changeTeleStatus(true)
-            : changeTeleStatus(false)
+          checkTelePhone(tele) ? setTeleStatus(true) : setTeleStatus(false)
         }}
       />
       <View style={Style.centerContainor}>
@@ -75,11 +70,11 @@ export default () => {
             />
           }
           containerStyle={Style.codeInput}
-          onFocus={() => changeFocusCode(true)}
-          onBlur={() => changeFocusCode(false)}
+          onFocus={() => setFocusCode(true)}
+          onBlur={() => setFocusCode(false)}
           errorMessage={codeIsError ? '验证码有误，请核对' : ''}
           onChangeText={(code) => {
-            checkCode(code) ? changeCodeStatus(true) : changeCodeStatus(false)
+            checkCode(code) ? setCodeStatus(true) : setCodeStatus(false)
           }}
         />
         <Button
