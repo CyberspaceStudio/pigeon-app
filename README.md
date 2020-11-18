@@ -62,3 +62,23 @@ git checkout -b <your-feature-branch-name>
     - commit message  [戳这里](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.uci6olwuf96)
     - 变量，函数命名
     - ...
+
+## 自定义icon
+
+1. 将`.ttf`文件放在`android/app/src/assets/fonts/`目录下
+
+2. 将iconfont的`.json`文件放在`app/asserts/fonts/`目录下
+
+3. 运行`yarn android`，重新编译
+
+4. 使用
+~~~javascript
+import Icon from '../../asserts/fonts/customIcon'
+
+<Icon
+    name="suozi-copy"
+    size={28}
+    color="#cccccc"
+/>
+~~~
+
