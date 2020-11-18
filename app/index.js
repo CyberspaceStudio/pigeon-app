@@ -1,13 +1,12 @@
-import * as React from 'react';
-import Login from './pages/Login'
-
+import React from 'react'
+import Login from './pages/GetVerificationCode'
 
 function App() {
-    return (
-        <>
-            <Login />
-        </>
-    );
+  return (
+    <>
+      <Login />
+    </>
+  )
 }
 
-export default App;
+export default App
