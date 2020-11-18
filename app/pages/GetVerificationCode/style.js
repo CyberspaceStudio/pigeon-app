@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native'
-import { pxToDp, deviceWidthDp } from '../../style/unit'
+import { pxToDp, deviceWidthDp, Color } from '../../style'
 
 export const color = {
-  active: '#0289FA',
-  defText: '#909090',
-  defBut: '#E0E0E0'
+  active: Color.buttonActiveColor,
+  defText: Color.placeholderTextColor,
+  defBut: Color.buttonDisabledColor
 }
 
 export default StyleSheet.create({
