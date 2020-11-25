@@ -61,6 +61,7 @@ export default StyleSheet.create({
   form: {
     width: pxToDp(310),
     marginTop: pxToDp(-252),
+    zIndex: 2,
     ...layout.flexColumn
   },
   input: {

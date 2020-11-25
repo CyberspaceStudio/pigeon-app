@@ -1,4 +1,3 @@
-import React from 'react'
 import { StyleSheet } from 'react-native'
 import { pxToDp } from '../../style/unit'
 
@@ -8,7 +7,8 @@ const styles = StyleSheet.create({
     marginBottom: pxToDp(344)
   },
   input: {
-    height: pxToDp(31),
+    height: pxToDp(45),
+    fontSize: pxToDp(14),
     marginLeft: pxToDp(11),
     marginRight: pxToDp(11),
     marginBottom: pxToDp(24),
@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
     borderBottomColor: '#E0E0E0'
   },
   confirm: {
-    height: pxToDp(31),
+    height: pxToDp(45), // 31
+    fontSize: pxToDp(14),
     marginLeft: pxToDp(11),
     marginRight: pxToDp(11),
     marginBottom: pxToDp(11),
