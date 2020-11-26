@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements'
 import { Color } from '../../style'
 import styles from './style'
 
-const Register = () => {
+const Register = ({ navigation }) => {
   const [prompt, setPrompt] = useState('密码长度8到16位')
   const [disabled, setDisabeled] = useState(true)
   const [passwordSite, setPasswordSite] = useState('')
@@ -36,14 +36,15 @@ const Register = () => {
     }
 
     if (
-      isPasswordLengthValid(lengthSite) ||
-      isPasswordLengthValid(lengthConfrim)
+      !isPasswordLengthValid(lengthSite) ||
+      !isPasswordLengthValid(lengthConfrim)
     ) {
       setWarning(true)
       return
     } else if (passwordSite == passwordConfrim) {
       setWarning(false)
       setPrompt('密码长度8到16位')
+      navigation.pop(2)
     }
   }
 
@@ -51,7 +52,7 @@ const Register = () => {
     <View style={styles.container}>
       <TextInput
         placeholder="输入密码"
-        placeholderTextColor={placeholderTextColor}
+        placeholderTextColor={Color.placeholderTextColor}
         style={styles.input}
         onChangeText={(text) => setPasswordSite(text)}
       />

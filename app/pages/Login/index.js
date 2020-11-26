@@ -9,7 +9,7 @@ import LogoShowPng from '../../asserts/images/logoShow.png'
 import logoHidePng from '../../asserts/images/logoHide.png'
 import style from './style'
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [isEditingPassword, setIsEditingPassword] = useState(false)
 
   return (
@@ -53,9 +53,25 @@ const Login = () => {
         )}
       </Formik>
       <View style={style.panel}>
-        <Text style={style.panelItem}>忘记密码?</Text>
+        <Text
+          style={style.panelItem}
+          onPress={() =>
+            navigation.navigate('GetVerificationCode', {
+              type: 'ForgetPassword'
+            })
+          }
+        >
+          忘记密码?
+        </Text>
         <View style={style.divider} />
-        <Text style={style.panelItem}>快速注册</Text>
+        <Text
+          style={style.panelItem}
+          onPress={() =>
+            navigation.navigate('GetVerificationCode', { type: 'Register' })
+          }
+        >
+          快速注册
+        </Text>
       </View>
     </View>
   )
